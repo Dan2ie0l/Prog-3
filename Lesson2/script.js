@@ -89,13 +89,7 @@ function draw() {
     if (z >= 0 && z < 50) {
         season = "spring";
         seasonText.innerHTML = "Spring"
-        
-        /*if (season == "spring" && grassArr.length == 0) {
-            var a = Math.floor(Math.random() * g);
-            var b = Math.floor(Math.random() * h);
-            var gr = new Grass(a, b, 1);
-            grassArr.push(gr);
-        }*/
+    
     }
     else if (z >= 50 && z < 100) {
         season = "autumn"
@@ -335,7 +329,7 @@ for (var y = 0; y < g; y++) {
     }
 }
 
-
+// Matrix Generator
 for (var i = 0; i < 250; i++) {
     var a = Math.floor(Math.random() * g)
     var b = Math.floor(Math.random() * g)
@@ -362,33 +356,3 @@ for (var i = 0; i < 30; i++) {
     var b = Math.floor(Math.random() * g)
     matrix[a][b] = 5
 }
-/*for (var y = 0; y < matrix.length; y++) {
-
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                fill("green");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 0) {
-                fill("#acacac");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 2) {
-                fill("yellow");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 3) {
-                fill("red");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 4) {
-                fill("brown");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 5) {
-                fill("black");
-                rect(x * side, y * side, side, side);
-            }
-        }
-    } */
-    
