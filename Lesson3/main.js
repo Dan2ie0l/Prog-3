@@ -7,7 +7,7 @@ function main(){
 main();
 */
 
-/*var express = require("express");
+var express = require("express");
 var app = express();
 
 app.get("/google", function(req, res){
@@ -18,7 +18,7 @@ app.get("/google", function(req, res){
 app.listen(3000, function(){
    console.log("Example is running on port 3000");
 });
-*/
+
 
 /*var express = require("express");
 var app = express();
@@ -34,7 +34,7 @@ app.listen(3000, function(){
    console.log("Example is running on port 3000");
 });
 */
-
+/*
 var express = require("express");
 var app = express();
 
@@ -47,3 +47,4 @@ app.get("/", function(req, res){
 app.listen(3000, function(){
    console.log("Example is running on port 3000");
 });
+*/
