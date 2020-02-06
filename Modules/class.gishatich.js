@@ -61,7 +61,7 @@ module.exports = class Gishatich extends KendaniEak {
   bazmanal() {
     this.energy = 25;
     var norVandak = random(this.yntrelVandak(0));
-    if (norVandak) {c
+    if (norVandak) {
       var gishatich = new Gishatich(norVandak[0], norVandak[1]);
       gishatichner.push(gishatich);
       matrix[norVandak[1]][norVandak[0]] = 4;
