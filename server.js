@@ -12,9 +12,15 @@ xotakerner = [];
 vorsord = [];
 mahh = [];
 grassHashiv = 0;
+xotakerhashiv = 0;
+gishatichhashiv = 0;
+vorsordhashiv = 0;
+mahhashiv = 0;
+
+
 matrix = [];
-var season;
-var z;
+var season = '';
+
 
 // end 
 
@@ -54,7 +60,7 @@ function matrixGenerator(matrixSize, grass, xotakerner, gishatichner, vorsord, m
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 5, 1, 5, 6, 2);
+matrixGenerator(20, 10, 2, 2, 3, 3);
 //end
 
 
@@ -66,7 +72,7 @@ app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3003);
+server.listen(3001);
 
 
 //
@@ -75,23 +81,26 @@ function creatingobjects() {
     for (var y = 0; y < matrix.length; ++y) {
         for (var x = 0; x < matrix[y].length; ++x) {
             if (matrix[y][x] == 1) {
-
                 grassArr.push(new Grass(x, y, 1));
                 grassHashiv++;
+                console.log(grassHashiv)
             }
             else if (matrix[y][x] == 2) {
                 xotakerner.push(new Xotaker(x, y, 2));
+                xotakerhashiv++;
             }
             else if (matrix[y][x] == 3) {
                 gishatichner.push(new Gishatich(x, y, 3));
-
+                gishatichhashiv++;
             }
             else if (matrix[y][x] == 4) {
                 vorsord.push(new Vorsord(x, y, 4));
+                vorsordhashiv++;
 
             }
             else if (matrix[y][x] == 5) {
                 mahh.push(new Mah(x, y, 5));
+                mahhashiv++;
 
             }
         }
@@ -103,32 +112,29 @@ creatingobjects();
 // myus obyektneri hashivnery 
 //
 
+var z;
 function game() {
 
 
-
     z++;
-    if (z >= 0 && z < 50) {
+    if (z >= 0 && z < 10) {
         season = "spring";
-        seasonText.innerHTML = "Spring"
-
     }
-    else if (z >= 50 && z < 100) {
+    else if (z >= 10 && z < 20) {
         season = "autumn"
-        seasonText.innerHTML = "Fall"
+        
     }
-    else if (z >= 100 && z < 150) {
+    else if (z >= 20 && z < 30) {
         season = "summer"
-        seasonText.innerHTML = "Summer"
+       
     }
-    else if (z >= 150 && z <= 200) {
-        season = "winter"
-        seasonText.innerHTML = "Winter"
-        if (z == 200) {
-            z = 0
-        }
-
+    else if (z >= 30 && z <= 40) {
+        season = "winter"    
+    } else {
+     z=0
     }
+   
+    
     for (var i in grassArr) {
         grassArr[i].bazmanal();
     }
@@ -181,20 +187,24 @@ function game() {
     }
 
 
-
+ 
 
 
     //! Object to send
     let sendData = {
         matrix: matrix,
         grassCounter: grassHashiv,
-        season: season
-
+        season: season,
+        grassEaterCounter:xotakerhashiv,
+        gishatichCounter:gishatichhashiv,
+        vorsordCounter: vorsordhashiv,
+        mahCounter: mahhashiv
     }
 
     //! Send data over the socket to clients who listens "data"
     io.sockets.emit("data", sendData);
+ 
+
 }
 
-setInterval(game, 1000
-)
+setInterval(game,1000)
